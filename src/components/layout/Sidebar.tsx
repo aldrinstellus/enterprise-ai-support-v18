@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Plus, ChevronDown, Check } from 'lucide-react';
+import { Plus, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Avatar } from '@/components/ui/Avatar';

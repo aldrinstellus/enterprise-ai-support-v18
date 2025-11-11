@@ -5,7 +5,7 @@
  * Each variant targets different audiences with different durations and content.
  */
 
-import { DeckVariant } from '../presentation/deck';
+// Note: DeckVariant import removed as presentation features are no longer in V16
 
 /**
  * Supported demo variant types
@@ -53,9 +53,6 @@ export interface DemoVariantConfig {
 
   /** Target audience */
   audience: VariantAudience;
-
-  /** Deck variant configuration */
-  deckVariant: DeckVariant;
 
   /** Key messages to emphasize */
   keyMessages: string[];

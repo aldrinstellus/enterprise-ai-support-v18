@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Send, Sparkles, PanelLeft, PanelLeftClose, Copy, Check, RotateCw, ThumbsUp, ThumbsDown, Download } from 'lucide-react';
+import { Send, PanelLeft, PanelLeftClose, Copy, Check, RotateCw, ThumbsUp, ThumbsDown, Download } from 'lucide-react';
 import { detectWidgetQuery, type PersonaId, type QueryMatch } from '@/lib/query-detection';
 import { WidgetRenderer } from '@/components/widgets/WidgetRenderer';
 import { useQuickAction } from '@/contexts/QuickActionContext';
