@@ -14,7 +14,6 @@ import { ClosedCaptions } from '@/components/accessibility/ClosedCaptions';
 import { NarratorToggle } from '@/components/demo/NarratorToggle';
 import { useClosedCaptions } from '@/hooks/accessibility/useClosedCaptions';
 import { useNarratorVisibility } from '@/hooks/demo/useNarratorVisibility';
-import { IntroSlides } from '@/components/presentation/IntroSlides';
 
 interface InteractiveChatProps {
   persona?: Persona;
@@ -31,7 +30,6 @@ export const InteractiveChat = forwardRef<InteractiveChatRef, InteractiveChatPro
   const [inputValue, setInputValue] = useState('');
   const [isThinking, setIsThinking] = useState(false);
   const [isComposing, setIsComposing] = useState(false);
-  const [showIntroSlides, setShowIntroSlides] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isTyping, setIsTyping] = useState(false); // Keep for backward compatibility
   const [typingMessageId, setTypingMessageId] = useState<string | null>(null);
@@ -96,11 +94,6 @@ export const InteractiveChat = forwardRef<InteractiveChatRef, InteractiveChatPro
 
   // Process a query string (used by both form submit and ref call)
   const processQuery = async (query: string) => {
-    // Hide intro slides on first user message
-    if (showIntroSlides) {
-      setShowIntroSlides(false);
-    }
-
     const userMessage: Message = {
       id: `user-${Date.now()}`,
       type: 'user',
@@ -337,16 +330,7 @@ export const InteractiveChat = forwardRef<InteractiveChatRef, InteractiveChatPro
       {/* Messages Container */}
       <div ref={messagesContainerRef} className="flex-1 overflow-y-auto px-6 py-6 pb-40">
         <div className="pb-8">
-          {messages.length === 0 && !isThinking && !isComposing && showIntroSlides && (
-            <IntroSlides
-              autoAdvanceInterval={5000}
-              autoAdvance={true}
-              onDismiss={() => setShowIntroSlides(false)}
-              showControls={true}
-            />
-          )}
-
-          {messages.length === 0 && !isThinking && !isComposing && !showIntroSlides && (
+          {messages.length === 0 && !isThinking && !isComposing && (
             <div className="flex flex-col items-center justify-center h-full min-h-[60vh] text-center max-w-3xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-medium text-foreground mb-3">
                 AI-enhanced customer support services
