@@ -78,8 +78,8 @@ export function InteractiveChatWithFloatingInput() {
         <InteractiveChat ref={chatRef} persona={currentPersona} />
       </div>
 
-      {/* Floating Input Bar */}
-      <div className={`fixed bottom-8 ${sidebarOpen ? 'left-[calc(50%+150px)]' : 'left-1/2'} -translate-x-1/2 w-full max-w-4xl px-6 flex items-center gap-3 z-10 transition-all duration-300`}>
+      {/* Floating Input Bar - Responsive */}
+      <div className={`fixed bottom-8 ${sidebarOpen ? 'left-[calc(50%+150px)]' : 'left-1/2'} -translate-x-1/2 w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl px-4 sm:px-6 flex flex-col sm:flex-row items-center gap-3 z-10 transition-all duration-300`}>
         {/* Input with inline Send button */}
         <form onSubmit={handleSubmit} className="flex-1 relative">
           <input
@@ -101,13 +101,13 @@ export function InteractiveChatWithFloatingInput() {
           </button>
         </form>
 
-        {/* Quick Launch Button */}
+        {/* Quick Launch Button - Hidden on mobile, visible on tablet+ */}
         <button
           onClick={() => setIsPaletteOpen(true)}
-          className="flex items-center gap-2 px-5 py-4 bg-primary text-primary-foreground rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 hover:bg-primary/90 whitespace-nowrap"
+          className="hidden sm:flex items-center gap-2 px-5 py-4 bg-primary text-primary-foreground rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 hover:bg-primary/90 whitespace-nowrap"
         >
           <span className="text-sm font-medium">Quick Launch</span>
-          <kbd className="px-2 py-1 bg-primary-foreground/20 rounded text-xs">⌘K</kbd>
+          <kbd className="hidden md:inline px-2 py-1 bg-primary-foreground/20 rounded text-xs">⌘K</kbd>
         </button>
       </div>
 
