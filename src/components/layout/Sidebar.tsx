@@ -7,7 +7,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Avatar } from '@/components/ui/Avatar';
 import { usePersona } from '@/hooks/use-persona';
 import { useConversation } from '@/contexts/ConversationContext';
-import { CTISLogo } from '@/components/layout/CTISLogo';
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -52,11 +51,8 @@ export function Sidebar({
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         } transition-opacity duration-200`}
       >
-      {/* CTIS Logo */}
-      <CTISLogo />
-
       {/* Fixed Top: New Conversation Button - Compact */}
-      <div className="flex-shrink-0 px-3 pb-3 border-b border-border">
+      <div className="flex-shrink-0 px-3 pt-3 pb-3 border-b border-border">
         <button
           onClick={onNewConversation}
           className="w-full flex items-center justify-center gap-1.5 px-3 py-2 bg-muted hover:bg-muted/80 rounded-md text-xs font-medium text-foreground transition-colors"
