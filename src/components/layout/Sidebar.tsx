@@ -55,13 +55,13 @@ export function Sidebar({
       {/* CTIS Logo */}
       <CTISLogo />
 
-      {/* Fixed Top: New Conversation Button */}
-      <div className="flex-shrink-0 px-4 pb-4 border-b border-border">
+      {/* Fixed Top: New Conversation Button - Compact */}
+      <div className="flex-shrink-0 px-3 pb-3 border-b border-border">
         <button
           onClick={onNewConversation}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-muted hover:bg-muted/80 rounded-lg text-sm font-medium text-foreground transition-colors"
+          className="w-full flex items-center justify-center gap-1.5 px-3 py-2 bg-muted hover:bg-muted/80 rounded-md text-xs font-medium text-foreground transition-colors"
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-3.5 h-3.5" />
           New Conversation
         </button>
       </div>
@@ -152,14 +152,14 @@ export function Sidebar({
 
       {/* Fixed Bottom Section: Reset Data + User Profile */}
       <div className="flex-shrink-0">
-        {/* Reset Data */}
-        <div className="px-4 py-3 border-t border-border">
+        {/* Reset Data - Compact */}
+        <div className="px-3 py-2 border-t border-border">
           <button
             onClick={onResetData}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+            className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
           >
             <svg
-              className="w-4 h-4"
+              className="w-3.5 h-3.5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
