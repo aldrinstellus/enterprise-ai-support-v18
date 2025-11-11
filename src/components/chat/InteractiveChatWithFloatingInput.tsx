@@ -79,7 +79,7 @@ export function InteractiveChatWithFloatingInput() {
       </div>
 
       {/* Floating Input Bar - Responsive */}
-      <div className={`fixed bottom-8 ${sidebarOpen ? 'left-[calc(50%+150px)]' : 'left-1/2'} -translate-x-1/2 w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl px-4 sm:px-6 flex flex-col sm:flex-row items-center gap-3 z-10 transition-all duration-300`}>
+      <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 ${sidebarOpen ? 'lg:left-[calc(50%+150px)]' : ''} w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl px-4 sm:px-6 flex flex-col sm:flex-row items-center gap-3 z-10 transition-all duration-300`}>
         {/* Input with inline Send button */}
         <form onSubmit={handleSubmit} className="flex-1 relative">
           <input
@@ -107,7 +107,7 @@ export function InteractiveChatWithFloatingInput() {
           className="hidden sm:flex items-center gap-2 px-5 py-4 bg-primary text-primary-foreground rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 hover:bg-primary/90 whitespace-nowrap"
         >
           <span className="text-sm font-medium">Quick Launch</span>
-          <kbd className="hidden md:inline px-2 py-1 bg-primary-foreground/20 rounded text-xs">⌘K</kbd>
+          <kbd className="hidden lg:inline px-2 py-1 bg-primary-foreground/20 rounded text-xs">⌘K</kbd>
         </button>
       </div>
 
