@@ -239,9 +239,6 @@ export function Sidebar({
                 <p className="text-sm font-medium text-foreground truncate">{currentPersona.name}</p>
                 <p className="text-xs text-muted-foreground truncate">{currentPersona.role}</p>
               </div>
-
-              {/* Dropdown Icon */}
-              <ChevronDown className={`h-4 w-4 text-muted-foreground flex-shrink-0 transition-transform ${personaSelectorOpen ? 'rotate-180' : ''}`} />
             </button>
           )}
 
