@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Plus, ChevronDown, Check, Minimize2, Maximize2 } from 'lucide-react';
+import { Plus, ChevronDown, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Avatar } from '@/components/ui/Avatar';
@@ -29,7 +29,6 @@ export function Sidebar({
   const { currentPersona, setPersona, availablePersonas } = usePersona();
   const { messagesByPersona } = useConversation();
   const [personaSelectorOpen, setPersonaSelectorOpen] = useState(false);
-  const [compactMode, setCompactMode] = useState(false); // A/B test toggle
 
   // Get current persona's message count
   const currentMessages = messagesByPersona[currentPersona.id] || [];
@@ -178,69 +177,21 @@ export function Sidebar({
 
         {/* User Profile with Persona Selector */}
         <div className="border-t border-border p-4">
-        <div className="relative space-y-3">
-          {/* A/B Test Toggle Button */}
+        <div className="relative">
+          {/* Compact Profile Button */}
           <button
-            onClick={() => setCompactMode(!compactMode)}
-            className="absolute -top-2 right-2 z-10 p-1.5 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
-            title={compactMode ? 'Switch to Regular Mode' : 'Switch to Compact Mode'}
+            onClick={() => setPersonaSelectorOpen(!personaSelectorOpen)}
+            className="w-full flex items-center gap-3 px-3 py-2 bg-primary/10 rounded-lg hover:bg-primary/15 transition-colors"
           >
-            {compactMode ? <Maximize2 className="h-3.5 w-3.5 text-muted-foreground" /> : <Minimize2 className="h-3.5 w-3.5 text-muted-foreground" />}
+            {/* Avatar */}
+            <Avatar name={currentPersona.name} size={32} />
+
+            {/* User Info */}
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-foreground truncate">{currentPersona.name}</p>
+              <p className="text-xs text-muted-foreground truncate">{currentPersona.role}</p>
+            </div>
           </button>
-
-          {!compactMode ? (
-            // REGULAR MODE (Original Design)
-            <>
-              {/* Persona Badge */}
-              <div className="w-full">
-                <div className={`w-full flex items-center justify-center gap-2 rounded-lg ${currentPersona.theme.badgeSolid} px-3 py-1.5 shadow-sm`}>
-                  {(() => {
-                    const BadgeIcon = currentPersona.badge.icon;
-                    return <BadgeIcon className="h-3.5 w-3.5 text-white" />;
-                  })()}
-                  <span className="text-xs font-bold uppercase tracking-wider text-white">{currentPersona.badge.label}</span>
-                </div>
-              </div>
-
-              {/* Profile Button */}
-              <button
-                onClick={() => setPersonaSelectorOpen(!personaSelectorOpen)}
-                className="w-full relative overflow-hidden rounded-xl border border-border bg-card p-4 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md hover:border-primary/30"
-              >
-                <div className="flex flex-col items-center gap-2">
-                  {/* Avatar */}
-                  <Avatar name={currentPersona.name} size={48} />
-
-                  {/* User Info */}
-                  <div className="w-full text-center">
-                    <p className="font-semibold text-foreground truncate">{currentPersona.name}</p>
-                    <p className="text-xs text-muted-foreground truncate">{currentPersona.email}</p>
-                    <p className="text-[10px] text-muted-foreground/70 truncate">{currentPersona.role}</p>
-                  </div>
-
-                  {/* Dropdown Icon */}
-                  <div className="absolute top-2 right-2">
-                    <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${personaSelectorOpen ? 'rotate-180' : ''}`} />
-                  </div>
-                </div>
-              </button>
-            </>
-          ) : (
-            // COMPACT MODE (Badge hidden, only avatar + name + role)
-            <button
-              onClick={() => setPersonaSelectorOpen(!personaSelectorOpen)}
-              className="w-full flex items-center gap-3 px-3 py-2 bg-primary/10 rounded-lg hover:bg-primary/15 transition-colors"
-            >
-              {/* Avatar */}
-              <Avatar name={currentPersona.name} size={32} />
-
-              {/* User Info */}
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground truncate">{currentPersona.name}</p>
-                <p className="text-xs text-muted-foreground truncate">{currentPersona.role}</p>
-              </div>
-            </button>
-          )}
 
           {/* Persona Selector Dropdown */}
           <AnimatePresence>
