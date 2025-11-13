@@ -302,6 +302,12 @@ export const dashboardWidgets: Record<PersonaType, DashboardWidget[]> = {
       query: 'Show me comprehensive team dashboard',
     },
   ],
+
+  // ATC Mode Personas
+  'atc-executive': [],
+  'atc-manager': [],
+  'atc-support': [],
+  'atc-csm': [],
 };
 
 export function getDashboardWidgets(persona: PersonaType): DashboardWidget[] {
