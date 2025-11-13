@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Plus, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname, useRouter } from 'next/navigation';
@@ -29,14 +29,20 @@ export function Sidebar({
   const { currentPersona, setPersona, availablePersonas } = usePersona();
   const { messagesByPersona } = useConversation();
   const [personaSelectorOpen, setPersonaSelectorOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  // Fix hydration: Only show conversation data after client mount
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Get current persona's message count
   const currentMessages = messagesByPersona[currentPersona.id] || [];
-  const messageCount = currentMessages.length;
+  const messageCount = isClient ? currentMessages.length : 0;
 
   // Get first user message as preview (if exists)
   const firstUserMessage = currentMessages.find(msg => msg.type === 'user');
-  const conversationPreview = firstUserMessage?.content?.substring(0, 50) || null;
+  const conversationPreview = isClient ? (firstUserMessage?.content?.substring(0, 50) || null) : null;
 
   // Get persona-specific Quick Actions
   const quickActions = currentPersona.quickActions || [];
