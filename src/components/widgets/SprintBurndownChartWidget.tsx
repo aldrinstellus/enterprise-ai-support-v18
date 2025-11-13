@@ -196,7 +196,7 @@ export function SprintBurndownChartWidget({ data: providedData }: { data?: Sprin
               <div key={idx} className="rounded-lg border border-chart-4/30 bg-chart-4/5 p-3 flex items-start gap-2">
                 <AlertTriangle className="h-4 w-4 text-chart-4 mt-0.5" />
                 <span className="text-sm text-foreground">
-                  {typeof risk === 'string' ? risk : risk.description || JSON.stringify(risk)}
+                  {typeof risk === 'string' ? risk : (risk as { description?: string }).description || JSON.stringify(risk)}
                 </span>
               </div>
             ))}
