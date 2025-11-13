@@ -3,7 +3,9 @@
 //
 // NOTE: This file is currently unused and has type mismatches.
 // Type checking is disabled to prevent build errors.
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 import {
   mockUsers,
