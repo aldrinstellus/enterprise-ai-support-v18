@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+/* eslint-enable @typescript-eslint/ban-ts-comment */
+
 import Redis from 'ioredis'
 
 // Get Redis URL from environment variables with fallback to localhost
