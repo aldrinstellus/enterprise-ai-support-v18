@@ -21,8 +21,6 @@ export const corContractPerformanceData: ContractPerformanceData = {
     id: 'VEN-TC-001',
     name: 'TechCorp Solutions Inc.',
     tier: 'prime',
-    contactEmail: 'project.manager@techcorpsolutions.com',
-    contactPhone: '(202) 555-0142',
   },
   period: {
     startDate: '2024-01-15',
