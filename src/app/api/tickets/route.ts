@@ -41,12 +41,23 @@ export async function GET(req: NextRequest) {
     }
 
     // Fetch tickets from Zoho Desk
-    const response = await zoho.request<{ data: any[] }>(
+    interface ZohoTicket {
+      id: string;
+      ticketNumber: string;
+      subject?: string;
+      priority?: string;
+      status?: string;
+      assignee?: { name?: string };
+      createdTime?: string;
+      dueDate?: string;
+    }
+
+    const response = await zoho.request<{ data: ZohoTicket[] }>(
       `/api/v1/tickets?limit=${limit}&sortBy=-createdTime`
     );
 
     // Transform Zoho tickets to our format
-    const tickets = response.data.map((ticket: any) => ({
+    const tickets = response.data.map((ticket: ZohoTicket) => ({
       id: ticket.id,
       ticketNumber: ticket.ticketNumber,
       summary: ticket.subject || 'No subject',
