@@ -11,7 +11,7 @@
  * My Tasks Dashboard
  * Personal task list with priorities and deadlines
  */
-export const serviceMemberTaskData: PersonalTask[] = [
+export const serviceMemberTaskData = [
   {
     id: 'TASK-ME-1892',
     title: 'Implement multi-file upload for customer portal',
@@ -216,7 +216,7 @@ export const serviceMemberTaskData: PersonalTask[] = [
  * Active Support Tickets Assigned to Me
  * Customer-reported issues requiring attention
  */
-export const serviceMemberTicketData: AssignedTicket[] = [
+export const serviceMemberTicketData = [
   {
     id: 'TICKET-ME-4521',
     title: 'Customer unable to upload PDF files',
@@ -357,7 +357,7 @@ export const serviceMemberTicketData: AssignedTicket[] = [
  * Knowledge Base Favorites
  * Frequently accessed documentation and guides
  */
-export const serviceMemberKnowledgeData: KnowledgeBaseFavorite[] = [
+export const serviceMemberKnowledgeData = [
   {
     id: 'KB-FAV-001',
     title: 'Customer Portal Architecture Overview',
@@ -529,7 +529,7 @@ export const serviceMemberKnowledgeData: KnowledgeBaseFavorite[] = [
  * Daily Standup Notes
  * Last 5 days of standup updates
  */
-export const serviceMemberStandupData: StandupNote[] = [
+export const serviceMemberStandupData = [
   {
     id: 'STANDUP-2025-11-12',
     date: '2025-11-12',
@@ -626,7 +626,7 @@ export const serviceMemberStandupData: StandupNote[] = [
  * Time Tracking
  * Weekly time breakdown by project and task
  */
-export const serviceMemberTimeData: TimeEntry[] = [
+export const serviceMemberTimeData = [
   {
     id: 'TIME-2025-W45',
     week: 'Week 45 (Nov 11-15, 2025)',

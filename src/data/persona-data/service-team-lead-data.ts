@@ -11,7 +11,7 @@
  * Team Workload Dashboard
  * Current capacity and workload distribution
  */
-export const serviceTeamWorkloadData: TeamWorkload[] = [
+export const serviceTeamWorkloadData = [
   {
     id: 'WORK-2025-W45',
     teamMember: 'Molly Rivera',
@@ -180,7 +180,7 @@ export const serviceTeamWorkloadData: TeamWorkload[] = [
  * Code Quality Metrics
  * Team-wide quality indicators
  */
-export const serviceTeamQualityData: CodeQualityMetrics = {
+export const serviceTeamQualityData = {
   period: 'November 2025',
   codeCoverage: {
     current: 87.2,
@@ -263,7 +263,7 @@ export const serviceTeamQualityData: CodeQualityMetrics = {
  * Code Review Tracking
  * Active pull requests and review status
  */
-export const serviceTeamCodeReviewData: CodeReview[] = [
+export const serviceTeamCodeReviewData = [
   {
     id: 'PR-2845',
     title: 'feat: Add multi-file upload to customer portal',
@@ -463,7 +463,7 @@ export const serviceTeamCodeReviewData: CodeReview[] = [
  * Deployment Status
  * Production deployment tracking and health
  */
-export const serviceTeamDeploymentData: DeploymentStatus[] = [
+export const serviceTeamDeploymentData = [
   {
     id: 'DEPLOY-2025-W45-01',
     environment: 'production',
@@ -609,7 +609,7 @@ export const serviceTeamDeploymentData: DeploymentStatus[] = [
  * Team Performance Metrics
  * Individual and team-level productivity and quality
  */
-export const serviceTeamPerformanceData: TeamPerformance = {
+export const serviceTeamPerformanceData = {
   period: 'Sprint 45 (Oct 28 - Nov 11)',
   sprintGoals: {
     planned: 85,

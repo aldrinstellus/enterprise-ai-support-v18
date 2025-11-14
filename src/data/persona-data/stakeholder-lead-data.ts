@@ -11,7 +11,7 @@
  * Impact Analysis Dashboard
  * Analyzing impact of changes across user groups
  */
-export const stakeholderImpactData: ImpactAnalysis[] = [
+export const stakeholderImpactData = [
   {
     id: 'IMP-2025-PORTAL',
     initiative: 'Customer Portal Launch',
@@ -235,7 +235,7 @@ export const stakeholderImpactData: ImpactAnalysis[] = [
  * Business Requirements Tracking
  * Requirements with traceability to implementation
  */
-export const stakeholderRequirementsData: BusinessRequirement[] = [
+export const stakeholderRequirementsData = [
   {
     id: 'REQ-PORTAL-001',
     title: 'Customer Portal - Self-Service Account Management',
@@ -572,7 +572,7 @@ export const stakeholderRequirementsData: BusinessRequirement[] = [
  * Change Request Tracking
  * Business-driven change requests with impact assessment
  */
-export const stakeholderChangeData: ChangeRequest[] = [
+export const stakeholderChangeData = [
   {
     id: 'CHG-2025-142',
     title: 'Customer Portal - Add Multi-Language Support',
@@ -769,7 +769,7 @@ export const stakeholderChangeData: ChangeRequest[] = [
  * User Feedback Management
  * Capturing and categorizing user feedback
  */
-export const stakeholderFeedbackData: UserFeedback[] = [
+export const stakeholderFeedbackData = [
   {
     id: 'FEED-2025-Q4-001',
     source: 'NPS Survey',
@@ -899,7 +899,7 @@ export const stakeholderFeedbackData: UserFeedback[] = [
  * Stakeholder Communications Log
  * Record of all stakeholder touchpoints
  */
-export const stakeholderCommunicationData: StakeholderCommunication[] = [
+export const stakeholderCommunicationData = [
   {
     id: 'COMM-2025-142',
     type: 'town-hall',
