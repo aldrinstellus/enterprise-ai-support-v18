@@ -6,13 +6,6 @@
  * Focus: Team workload, code quality, deployments, performance metrics, team health
  */
 
-import type {
-  TeamWorkload,
-  CodeQualityMetrics,
-  CodeReview,
-  DeploymentStatus,
-  TeamPerformance
-} from '@/types/persona-types';
 
 /**
  * Team Workload Dashboard

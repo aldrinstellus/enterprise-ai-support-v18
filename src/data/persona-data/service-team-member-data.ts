@@ -6,13 +6,6 @@
  * Focus: Personal tasks, active tickets, knowledge base, standup notes, time tracking
  */
 
-import type {
-  PersonalTask,
-  AssignedTicket,
-  KnowledgeBaseFavorite,
-  StandupNote,
-  TimeEntry
-} from '@/types/persona-types';
 
 /**
  * My Tasks Dashboard

@@ -6,13 +6,6 @@
  * Focus: Requirements traceability, change impact, user adoption, communication
  */
 
-import type {
-  ImpactAnalysis,
-  BusinessRequirement,
-  ChangeRequest,
-  UserFeedback,
-  StakeholderCommunication
-} from '@/types/persona-types';
 
 /**
  * Impact Analysis Dashboard
