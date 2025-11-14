@@ -48,7 +48,9 @@ export async function GET(req: NextRequest) {
       priority?: string;
       status?: string;
       assignee?: { name?: string };
+      contact?: { name?: string; email?: string };
       createdTime?: string;
+      modifiedTime?: string;
       dueDate?: string;
     }
 
