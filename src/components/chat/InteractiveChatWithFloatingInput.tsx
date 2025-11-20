@@ -20,19 +20,8 @@ export function InteractiveChatWithFloatingInput() {
   const chatRef = useRef<InteractiveChatRef>(null);
   const processingQueryRef = useRef<string | null>(null);
 
-  // Get widgets from dashboard config OR convert persona quick actions
-  const dashboardWidgets = getDashboardWidgets(currentPersona.id);
-  const widgets = dashboardWidgets.length > 0
-    ? dashboardWidgets
-    : currentPersona.quickActions.map(qa => ({
-        id: qa.id,
-        type: 'text-response' as const,
-        title: qa.label,
-        description: qa.query,
-        query: qa.query,
-        icon: qa.icon,
-        color: qa.color,
-      }));
+  // Get widgets from dashboard config
+  const widgets = getDashboardWidgets(currentPersona.id);
 
   // Monitor QuickAction context for widget click events
   useEffect(() => {
