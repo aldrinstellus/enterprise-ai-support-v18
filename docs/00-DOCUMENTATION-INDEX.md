@@ -111,6 +111,8 @@ Start here in order:
 - **[E2E-TESTING.md](./09-testing/E2E-TESTING.md)** - Playwright end-to-end testing
 - **[TEST-DATA.md](./09-testing/TEST-DATA.md)** - Mock and demo data management
 - **[QA-CHECKLIST.md](./09-testing/QA-CHECKLIST.md)** - Quality gates and verification
+- **[V18-COMPREHENSIVE-TEST-REPORT.md](./09-testing/V18-COMPREHENSIVE-TEST-REPORT.md)** - V18 comprehensive multi-persona test results (6/11 personas, 100% success rate)
+- **[V18-PM-ANALYSIS-PACKAGE.md](./09-testing/V18-PM-ANALYSIS-PACKAGE.md)** - V18 product manager analysis and recommendations
 
 ### 10-deployment/
 **Deployment and infrastructure**
