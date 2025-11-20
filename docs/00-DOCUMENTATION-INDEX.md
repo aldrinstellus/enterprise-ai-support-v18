@@ -113,6 +113,9 @@ Start here in order:
 - **[QA-CHECKLIST.md](./09-testing/QA-CHECKLIST.md)** - Quality gates and verification
 - **[V18-COMPREHENSIVE-TEST-REPORT.md](./09-testing/V18-COMPREHENSIVE-TEST-REPORT.md)** - V18 comprehensive multi-persona test results (6/11 personas, 100% success rate)
 - **[V18-PM-ANALYSIS-PACKAGE.md](./09-testing/V18-PM-ANALYSIS-PACKAGE.md)** - V18 product manager analysis and recommendations
+- **[WONDERWOMAN-V18-FULL-SPECTRUM-ANALYSIS.md](./09-testing/WONDERWOMAN-V18-FULL-SPECTRUM-ANALYSIS.md)** - Wonder Woman full-spectrum PM analysis: 5-dimensional persona-question-widget assessment (3,200+ lines)
+- **[V18-CRITICAL-MISMATCHES.md](./09-testing/V18-CRITICAL-MISMATCHES.md)** - Critical mismatches quick reference: Top 10 issues prioritized by demo impact
+- **[V18-DEMO-READINESS-GUIDE.md](./09-testing/V18-DEMO-READINESS-GUIDE.md)** - Demo readiness guide: Safe queries, personas to showcase, risk mitigation strategies
 
 ### 10-deployment/
 **Deployment and infrastructure**
