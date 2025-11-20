@@ -120,7 +120,6 @@ export function CommandPalette({
             ) : (
               <div className="py-2">
                 {filteredWidgets.map((widget, index) => {
-                  const Icon = widget.icon;
                   return (
                     <button
                       key={widget.id}
@@ -131,8 +130,8 @@ export function CommandPalette({
                           : 'hover:bg-muted/50'
                       }`}
                     >
-                      <div className={`p-2 rounded-lg ${widget.color}`}>
-                        <Icon className="w-4 h-4 text-foreground" />
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        <Zap className="w-4 h-4 text-foreground" />
                       </div>
                       <div className="flex-1 text-left">
                         <div className="text-sm font-medium text-foreground">
