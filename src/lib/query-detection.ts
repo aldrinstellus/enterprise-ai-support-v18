@@ -1686,14 +1686,14 @@ function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
     };
   }
 
-  // Blockers → Live Metrics (real-time blocker tracking)
+  // Blockers → Blocker Resolution Dashboard (real-time blocker tracking)
   if (
     q.includes('blocker') && (q.includes('resolve') || q.includes('resolution') || q.includes('active')) ||
     q.includes('blocked tasks')
   ) {
     return {
-      widgetType: 'live-metrics',
-      widgetData: {}, // LiveMetricsWidget generates its own data
+      widgetType: 'blocker-resolution-dashboard',
+      widgetData: null,
       responseText: "Real-time blocker metrics show active impediments requiring immediate technical resolution:",
     };
   }

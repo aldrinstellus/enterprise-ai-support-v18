@@ -132,9 +132,6 @@ export function WidgetRenderer({ type, data, onAction }: WidgetRendererProps) {
       case 'live-ticket-detail':
         return <LiveTicketDetailWidget ticketNumber={(data as LiveTicketDetailData).ticketNumber} />;
 
-      case 'live-metrics':
-        return <LiveMetricsWidget />;
-
       case 'sla-performance-chart':
         return <SLAPerformanceChartWidget data={data as SLAPerformanceChartData} />;
 
