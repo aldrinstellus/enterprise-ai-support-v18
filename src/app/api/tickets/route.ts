@@ -52,6 +52,8 @@ export async function GET(req: NextRequest) {
       createdTime?: string;
       modifiedTime?: string;
       dueDate?: string;
+      category?: string;
+      channel?: string;
     }
 
     const response = await zoho.request<{ data: ZohoTicket[] }>(
