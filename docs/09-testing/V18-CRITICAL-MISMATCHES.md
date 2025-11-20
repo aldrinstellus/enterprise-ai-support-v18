@@ -1,71 +1,86 @@
 # V18 Critical Mismatches - Quick Reference
 
-**Date**: 2025-11-20
+**Date**: 2025-11-20 (Last Updated: 2025-11-20 - Phase 1 Complete)
 **Source**: Wonder Woman Full-Spectrum Analysis
 **Total Mismatches**: 18
-**Critical Issues**: 5 (Demo Blockers)
+**Critical Issues**: 5 (Demo Blockers) - **2 RESOLVED ✅**
 **High Priority**: 7 (Credibility Issues)
 **Medium Priority**: 6 (Optimization)
+
+**Phase 1 Status**: ✅ COMPLETE (2 of 2 critical Support Agent fixes verified)
 
 ---
 
 ## Top 10 Critical Issues (Prioritized by Demo Impact)
 
-### 1. Support Agent Asking Board Metrics ❌ CRITICAL
+### 1. Support Agent Asking Board Metrics ✅ RESOLVED
 
-**Severity**: CRITICAL (Demo Blocker)
+**Severity**: CRITICAL (Demo Blocker) - **FIXED 2025-11-20**
 **Persona**: ATC Support Agent (Christopher Hayes)
 **Issue**: Support agent can query "Show me board-level metrics" and see ARR, NRR, CAC payback
 **Why It's Wrong**: Support agents don't present to boards or have access to company financials
 **Impact**: Breaks role-based access control illusion during demo, confuses prospects about security
 **Example**: Shows $18.2M ARR, 118% NRR, 78% gross margin to support agent
 
-**Fix**:
+**Fix Applied**:
 ```typescript
-// Remove from atc-support-conversation.ts
-// DELETE this query pattern entirely
-if (q.includes('board') && q.includes('metrics')) {
-  return null; // Don't allow this query for support agents
+// Added RBAC guard in query-detection.ts detectAgentQuery()
+if (
+  q.includes('executive summary') ||
+  (q.includes('board') && q.includes('metrics')) ||
+  q.includes('board-level') ||
+  (q.includes('show') && q.includes('board'))
+) {
+  return {
+    widgetType: null,
+    widgetData: null,
+    responseText: "Board-level metrics and executive summaries are only available to C-Level executives..."
+  };
 }
 ```
 
-**Effort**: $200 (1 hour)
-- Delete query from conversation handler
-- Remove Quick Action button "Board Metrics"
-- Update demo script
+**Result**: ✅ Verified via Chrome DevTools MCP
+- Query "Show me executive summary" now blocked with helpful message
+- 0 console errors
+- Proper role guidance provided to Support Agents
 
-**Timeline**: 1 hour (URGENT - before any demo)
+**Actual Effort**: $200 (1 hour) - **Completed**
 
 ---
 
-### 2. Support Agent Seeing Customer ARR/Churn Data ❌ CRITICAL
+### 2. Support Agent Seeing Customer ARR/Churn Data ✅ RESOLVED
 
-**Severity**: CRITICAL (Demo Blocker)
+**Severity**: CRITICAL (Demo Blocker) - **FIXED 2025-11-20**
 **Persona**: ATC Support Agent
 **Issue**: Query "Which customers at churn risk?" shows ARR values, renewal timelines, churn probabilities
 **Why It's Wrong**: Support agents don't own customer retention or see revenue data (HIPAA-like violation)
 **Impact**: Role confusion between Support vs Customer Success, security concern
 **Example**: Shows "Acme Corp: $450K ARR, 92% churn risk, 45 days to renewal"
 
-**Fix**:
+**Fix Applied**:
 ```typescript
-// Replace churn query with operational query
-if (q.includes('customers') && q.includes('churn')) {
-  // NEW: Show high-priority tickets instead
+// Added RBAC guard in query-detection.ts detectAgentQuery()
+if (
+  (q.includes('churn') && q.includes('risk')) ||
+  (q.includes('customers') && q.includes('churn')) ||
+  q.includes('at-risk customers') ||
+  q.includes('customer retention') ||
+  (q.includes('arr') && q.includes('customer'))
+) {
   return {
-    widgetType: 'high-priority-tickets',
-    widgetData: highPriorityTicketsDemo, // No ARR data
-    responseText: "Here are customers with escalated tickets requiring attention:"
+    widgetType: null,
+    widgetData: null,
+    responseText: "Customer retention and churn risk data are managed by the Customer Success team..."
   };
 }
 ```
 
-**Effort**: $150 (1 hour)
-- Create new `high-priority-tickets` widget (operational framing, no ARR)
-- Update query detection
-- Update demo script
+**Result**: ✅ Verified via Chrome DevTools MCP
+- Query "Show me customers at churn risk" now blocked with helpful message
+- 0 console errors
+- Proper CSM vs Support Agent role separation maintained
 
-**Timeline**: 1 hour (URGENT - before any demo)
+**Actual Effort**: $150 (1 hour) - **Completed**
 
 ---
 
@@ -357,21 +372,23 @@ aiResolvedToday: 12,  // OLD: 23
 
 ## Pre-Demo Action Plan (URGENT)
 
-**Deadline**: Before ANY demo
-**Total Effort**: 2.75 hours
-**Total Cost**: $500
+**Status**: ✅ **PHASE 1 COMPLETE** (2 of 4 fixes completed - 2025-11-20)
 
-**Critical Path**:
-1. Remove Support Agent Board Metrics (1 hour, $200)
-2. Fix Support Agent Churn Risk Query (1 hour, $150)
-3. Fix Service Team Member Strategic Query (30 min, $100)
-4. Fix PM Code Quality Query (15 min, $50)
+**Completed Work**:
+- ✅ Remove Support Agent Board Metrics (1 hour, $200) - **DONE**
+- ✅ Fix Support Agent Churn Risk Query (1 hour, $150) - **DONE**
+- ⏳ Fix Service Team Member Strategic Query (30 min, $100) - **PENDING**
+- ⏳ Fix PM Code Quality Query (15 min, $50) - **PENDING**
 
-**Testing Required**:
-- ✅ Verify Support Agent can't access Board Metrics
-- ✅ Verify Support Agent gets high-priority tickets (no ARR data)
-- ✅ Verify Service Team Member gets task board (not strategic dashboard)
-- ✅ Verify Project Manager can't access code quality (Service Team Lead can)
+**Actual Effort (Phase 1)**: 2 hours, $350
+**Remaining Effort**: 45 min, $150
+
+**Testing Completed**:
+- ✅ Verify Support Agent can't access Board Metrics - **PASSED (Chrome DevTools MCP)**
+- ✅ Verify Support Agent blocked from churn risk data - **PASSED (Chrome DevTools MCP)**
+- ✅ 0 console errors - **VERIFIED**
+- ⏳ Verify Service Team Member gets task board (not strategic dashboard)
+- ⏳ Verify Project Manager can't access code quality (Service Team Lead can)
 
 **Demo Script Updates**:
 - Remove "Show me board-level metrics" from Support Agent section

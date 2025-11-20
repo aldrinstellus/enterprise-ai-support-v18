@@ -644,6 +644,43 @@ function detectManagerQuery(q: string): QueryMatch | null {
 // ============================================================================
 
 function detectAgentQuery(q: string): QueryMatch | null {
+  // ============================================================================
+  // RBAC GUARDS: Block C-Level and CSM queries for Support Agents
+  // ============================================================================
+
+  // Block Executive Summary / Board Metrics (C-Level only)
+  if (
+    q.includes('executive summary') ||
+    (q.includes('board') && q.includes('metrics')) ||
+    q.includes('board-level') ||
+    (q.includes('show') && q.includes('board'))
+  ) {
+    return {
+      widgetType: null,
+      widgetData: null,
+      responseText: "Board-level metrics and executive summaries are only available to C-Level executives. As a Support Agent, you have access to ticket management, knowledge base, and customer interaction tools. Try asking: 'Show me my open tickets' or 'What's on my plate today?'",
+    };
+  }
+
+  // Block Churn Risk / ARR Data (CSM only)
+  if (
+    (q.includes('churn') && q.includes('risk')) ||
+    (q.includes('customers') && q.includes('churn')) ||
+    q.includes('at-risk customers') ||
+    q.includes('customer retention') ||
+    (q.includes('arr') && q.includes('customer'))
+  ) {
+    return {
+      widgetType: null,
+      widgetData: null,
+      responseText: "Customer retention and churn risk data are managed by the Customer Success team. As a Support Agent, you can view high-priority tickets and escalated cases. Try asking: 'Show me high-priority tickets' or 'Show me escalated tickets'.",
+    };
+  }
+
+  // ============================================================================
+  // END RBAC GUARDS
+  // ============================================================================
+
   // PASSWORD RESET DEMO FLOW - Priority detection
   // Step 1: Initial password reset request
   if (

@@ -9,9 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed (2025-11-20 - Phase 1)
+- ✅ Support Agent can access Board Metrics (RBAC violation) - **RESOLVED**
+- ✅ Support Agent can access Churn Risk with ARR data (role confusion) - **RESOLVED**
+
 ### Critical Issues to Fix (Pre-Demo)
-- Support Agent can access Board Metrics (RBAC violation)
-- Support Agent can access Churn Risk with ARR data (role confusion)
+- Service Team Member can access Strategic Initiatives (role confusion)
+- Project Manager can access Code Quality metrics (role confusion)
 - Terminology inconsistencies across modes (customers vs contracts vs clients)
 
 ### Planned
