@@ -1562,15 +1562,15 @@ function detectStakeholderLeadQuery(q: string): QueryMatch | null {
     };
   }
 
-  // Requirements Tracking → Resource Capacity Dashboard (shows team capacity for requirements)
+  // Requirements Tracking → Requirements Tracking Dashboard (proper widget for Jessica Martinez)
   if (
     q.includes('requirement') && (q.includes('track') || q.includes('status') || q.includes('progress')) ||
     q.includes('requirements tracking')
   ) {
     return {
-      widgetType: 'resource-capacity-dashboard',
-      widgetData: resourceCapacityDemo,
-      responseText: "Team capacity allocation for requirements implementation and validation:",
+      widgetType: 'requirements-tracking-dashboard',
+      widgetData: requirementsTrackingDemo,
+      responseText: "Requirements tracking status shows implementation progress and validation metrics:",
     };
   }
 
