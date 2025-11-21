@@ -1550,15 +1550,15 @@ function detectProgramManagerQuery(q: string): QueryMatch | null {
 // ============================================================================
 
 function detectStakeholderLeadQuery(q: string): QueryMatch | null {
-  // Stakeholder Engagement → Task Kanban Board (tracks stakeholder-driven tasks)
+  // Stakeholder Engagement → Stakeholder Engagement Dashboard (proper widget for Jessica Martinez)
   if (
     q.includes('stakeholder') && (q.includes('engagement') || q.includes('status') || q.includes('communication')) ||
     q.includes('stakeholder dashboard')
   ) {
     return {
-      widgetType: 'task-kanban-board',
-      widgetData: taskKanbanDemo,
-      responseText: "Stakeholder-driven tasks and initiatives organized by priority and status:",
+      widgetType: 'stakeholder-engagement-dashboard',
+      widgetData: stakeholderEngagementDemo,
+      responseText: "Stakeholder engagement metrics show communication effectiveness and relationship health:",
     };
   }
 
