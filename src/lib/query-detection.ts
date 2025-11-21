@@ -1826,6 +1826,21 @@ function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
 function detectServiceTeamMemberQuery(q: string): QueryMatch | null {
   // IC-FOCUSED QUERIES ONLY (No strategic/program-level data)
 
+  // PRIORITY 0: Daily Update / Standup - task-focused dashboard
+  if (
+    q.includes('daily update') ||
+    q.includes('standup') ||
+    q.includes('daily standup') ||
+    q.includes('morning update') ||
+    (q.includes('today') && q.includes('update'))
+  ) {
+    return {
+      widgetType: 'agent-dashboard',
+      widgetData: agentDashboardDemo,
+      responseText: "Here's your daily update with today's sprint tasks, blockers, and priorities:",
+    };
+  }
+
   // PRIORITY 1: My Assigned Requests / Tasks (Government context)
   if (
     q.includes('my assigned') ||
