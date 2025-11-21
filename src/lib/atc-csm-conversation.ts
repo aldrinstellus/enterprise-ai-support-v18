@@ -12,6 +12,8 @@ import {
   renewalPipelineDemo,
   upsellOpportunitiesDemo,
   productAdoptionMetricsDemo,
+  csmInsightsDashboardDemo,
+  csmTrainingDashboardDemo,
 } from '@/data/csm-widget-data';
 
 export interface ConversationEntry {
@@ -194,6 +196,26 @@ const conversationEntries: ConversationEntry[] = [
     aiResponse: "Here's the revenue retention and expansion metrics analysis:",
     widgetType: 'renewal-pipeline',
     widgetData: renewalPipelineDemo,
+  },
+
+  // Q17: Customer Insights (AI-Powered)
+  {
+    id: 'q17-customer-insights',
+    triggers: ['customer insights', 'insights', 'ai insights', 'predictive insights', 'client insights'],
+    userQuery: 'Show me customer insights.',
+    aiResponse: "Here are AI-powered insights across your client portfolio:",
+    widgetType: 'csm-insights-dashboard',
+    widgetData: csmInsightsDashboardDemo,
+  },
+
+  // Q18: Customer Training Management
+  {
+    id: 'q18-training',
+    triggers: ['training', 'customer training', 'training sessions', 'training management', 'schedule training'],
+    userQuery: 'Show me customer training status.',
+    aiResponse: "Here's the training management dashboard for your clients:",
+    widgetType: 'csm-training-dashboard',
+    widgetData: csmTrainingDashboardDemo,
   },
 ];
 

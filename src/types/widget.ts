@@ -54,7 +54,10 @@ export type WidgetType =
   | 'task-kanban-board'
   | 'resource-capacity-dashboard'
   | 'blocker-resolution-dashboard'
-  | 'kb-article-viewer';
+  | 'kb-article-viewer'
+  // V18 CSM Insights & Training Widget Types
+  | 'csm-insights-dashboard'
+  | 'csm-training-dashboard';
 
 // ============================================================================
 // WIDGET DATA INTERFACES (Based on Bhanu's Demo Data)
@@ -1482,6 +1485,73 @@ export interface ProductAdoptionMetricsData {
   };
 }
 
+// V18 CSM Insights Dashboard
+export interface CSMInsightsDashboardData {
+  title: string;
+  period: string;
+  insights: Array<{
+    id: string;
+    category: 'churn-risk' | 'upsell' | 'engagement' | 'adoption' | 'satisfaction';
+    priority: 'critical' | 'high' | 'medium' | 'low';
+    title: string;
+    description: string;
+    impactedCustomers: number;
+    impactedArr: number;
+    recommendedAction: string;
+    confidence: number;
+    dataPoints: string[];
+  }>;
+  summary: {
+    totalInsights: number;
+    criticalInsights: number;
+    highPriorityInsights: number;
+    potentialArrImpact: number;
+    customersRequiringAction: number;
+  };
+  trendData: {
+    labels: string[];
+    datasets: Array<{
+      label: string;
+      data: number[];
+    }>;
+  };
+}
+
+// V18 CSM Training Dashboard
+export interface CSMTrainingDashboardData {
+  title: string;
+  period: string;
+  trainingSessions: Array<{
+    id: string;
+    customerName: string;
+    customerId: string;
+    trainingType: 'onboarding' | 'feature-adoption' | 'best-practices' | 'advanced' | 'refresher';
+    status: 'scheduled' | 'in-progress' | 'completed' | 'cancelled';
+    scheduledDate: string;
+    duration: string;
+    attendees: number;
+    topics: string[];
+    trainer: string;
+    completionRate?: number;
+    satisfactionScore?: number;
+    notes?: string;
+  }>;
+  upcomingCount: number;
+  completedThisMonth: number;
+  averageSatisfaction: number;
+  topRequestedTopics: Array<{
+    topic: string;
+    requestCount: number;
+  }>;
+  customersNeedingTraining: Array<{
+    customerId: string;
+    customerName: string;
+    reason: string;
+    priority: 'high' | 'medium' | 'low';
+    suggestedTopics: string[];
+  }>;
+}
+
 // Union type for all widget data
 export type WidgetData =
   | ExecutiveSummaryData
@@ -1531,4 +1601,6 @@ export type WidgetData =
   | ClientHealthDashboardData
   | RenewalPipelineData
   | UpsellOpportunitiesData
-  | ProductAdoptionMetricsData;
+  | ProductAdoptionMetricsData
+  | CSMInsightsDashboardData
+  | CSMTrainingDashboardData;

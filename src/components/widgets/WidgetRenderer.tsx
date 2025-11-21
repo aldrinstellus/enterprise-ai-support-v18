@@ -44,6 +44,8 @@ import type {
   RenewalPipelineData,
   UpsellOpportunitiesData,
   ProductAdoptionMetricsData,
+  CSMInsightsDashboardData,
+  CSMTrainingDashboardData,
 } from '@/types/widget';
 import { ExecutiveSummaryWidget } from './ExecutiveSummaryWidget';
 import { AnalyticsDashboardWidget } from './AnalyticsDashboardWidget';
@@ -90,6 +92,8 @@ import { ClientHealthDashboardWidget } from './ClientHealthDashboardWidget';
 import { RenewalPipelineWidget } from './RenewalPipelineWidget';
 import { UpsellOpportunitiesWidget } from './UpsellOpportunitiesWidget';
 import { ProductAdoptionMetricsWidget } from './ProductAdoptionMetricsWidget';
+import { CSMInsightsDashboardWidget } from './CSMInsightsDashboardWidget';
+import { CSMTrainingDashboardWidget } from './CSMTrainingDashboardWidget';
 
 interface WidgetRendererProps {
   type: WidgetType;
@@ -235,6 +239,12 @@ export function WidgetRenderer({ type, data, onAction }: WidgetRendererProps) {
 
       case 'product-adoption-metrics':
         return <ProductAdoptionMetricsWidget data={data as ProductAdoptionMetricsData} />;
+
+      case 'csm-insights-dashboard':
+        return <CSMInsightsDashboardWidget data={data as CSMInsightsDashboardData} />;
+
+      case 'csm-training-dashboard':
+        return <CSMTrainingDashboardWidget data={data as CSMTrainingDashboardData} />;
 
       default:
         // Fallback for unimplemented widgets
