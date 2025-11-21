@@ -1841,7 +1841,7 @@ function detectServiceTeamMemberQuery(q: string): QueryMatch | null {
     return {
       widgetType: 'agent-dashboard',
       widgetData: agentDashboardDemo,
-      responseText: "Your personal task dashboard shows assigned government service requests and priorities:",
+      responseText: "Your personal task dashboard shows assigned project tasks and priorities:",
     };
   }
 
