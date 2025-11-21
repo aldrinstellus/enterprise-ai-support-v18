@@ -46,6 +46,7 @@ import type {
   ProductAdoptionMetricsData,
   CSMInsightsDashboardData,
   CSMTrainingDashboardData,
+  DoraMetricsData,
 } from '@/types/widget';
 import { ExecutiveSummaryWidget } from './ExecutiveSummaryWidget';
 import { AnalyticsDashboardWidget } from './AnalyticsDashboardWidget';
@@ -94,6 +95,7 @@ import { UpsellOpportunitiesWidget } from './UpsellOpportunitiesWidget';
 import { ProductAdoptionMetricsWidget } from './ProductAdoptionMetricsWidget';
 import { CSMInsightsDashboardWidget } from './CSMInsightsDashboardWidget';
 import { CSMTrainingDashboardWidget } from './CSMTrainingDashboardWidget';
+import { DoraMetricsDashboardWidget } from './DoraMetricsDashboardWidget';
 
 interface WidgetRendererProps {
   type: WidgetType;
@@ -245,6 +247,9 @@ export function WidgetRenderer({ type, data, onAction }: WidgetRendererProps) {
 
       case 'csm-training-dashboard':
         return <CSMTrainingDashboardWidget data={data as CSMTrainingDashboardData} />;
+
+      case 'dora-metrics-dashboard':
+        return <DoraMetricsDashboardWidget data={data as DoraMetricsData} />;
 
       default:
         // Fallback for unimplemented widgets

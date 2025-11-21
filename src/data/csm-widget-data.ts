@@ -8,6 +8,7 @@ import type {
   ProductAdoptionMetricsData,
   CSMInsightsDashboardData,
   CSMTrainingDashboardData,
+  DoraMetricsData,
 } from '@/types/widget';
 
 // Client Health Dashboard Demo Data
@@ -663,6 +664,86 @@ export const csmTrainingDashboardDemo: CSMTrainingDashboardData = {
       reason: 'Recently purchased analytics module - 0% usage',
       priority: 'medium',
       suggestedTopics: ['Analytics Fundamentals', 'Dashboard Creation', 'Data Visualization'],
+    },
+  ],
+};
+
+// DORA Metrics Dashboard Demo Data
+export const doraMetricsDemo: DoraMetricsData = {
+  title: 'DORA Metrics Dashboard',
+  period: 'Last 30 Days',
+  team: 'Platform Engineering',
+  overallPerformance: 'high',
+  deploymentFrequency: {
+    value: '4.2',
+    unit: 'deploys/day',
+    target: '3+ per day',
+    trend: 'up',
+    change: '+15% from last month',
+    status: 'excellent',
+  },
+  leadTime: {
+    value: '2.4',
+    unit: 'hours',
+    target: '<4 hours',
+    trend: 'down',
+    change: '-22% from last month',
+    status: 'excellent',
+  },
+  changeFailureRate: {
+    value: 8.5,
+    target: 15,
+    trend: 'down',
+    change: '-3.2% from last month',
+    status: 'good',
+  },
+  mttr: {
+    value: '45',
+    unit: 'minutes',
+    target: '<1 hour',
+    trend: 'down',
+    change: '-18% from last month',
+    status: 'excellent',
+  },
+  insights: [
+    {
+      type: 'positive',
+      message: 'Deployment frequency exceeds elite performance threshold (multiple deploys per day)',
+    },
+    {
+      type: 'positive',
+      message: 'Lead time for changes is well within target, enabling rapid iteration',
+    },
+    {
+      type: 'warning',
+      message: 'Change failure rate trending down but still above elite threshold (<5%)',
+    },
+    {
+      type: 'positive',
+      message: 'Mean time to recovery is excellent, minimizing customer impact during incidents',
+    },
+  ],
+  recentIncidents: [
+    {
+      title: 'API Gateway Timeout',
+      date: '2024-11-15',
+      duration: '32 minutes',
+      impact: 'Partial service degradation',
+      resolved: true,
+    },
+    {
+      title: 'Database Connection Pool Exhaustion',
+      date: '2024-11-08',
+      duration: '58 minutes',
+      impact: 'High latency for write operations',
+      resolved: true,
+    },
+    {
+      title: 'CDN Cache Invalidation Failure',
+      date: '2024-11-03',
+      duration: '15 minutes',
+      impact: 'Stale content served to 12% of users',
+      resolved: true,
     },
   ],
 };

@@ -57,7 +57,9 @@ export type WidgetType =
   | 'kb-article-viewer'
   // V18 CSM Insights & Training Widget Types
   | 'csm-insights-dashboard'
-  | 'csm-training-dashboard';
+  | 'csm-training-dashboard'
+  // V18 DORA Metrics Widget Type
+  | 'dora-metrics-dashboard';
 
 // ============================================================================
 // WIDGET DATA INTERFACES (Based on Bhanu's Demo Data)
@@ -1552,6 +1554,56 @@ export interface CSMTrainingDashboardData {
   }>;
 }
 
+// V18 DORA Metrics Dashboard
+export interface DoraMetricsData {
+  title: string;
+  period: string;
+  team: string;
+  overallPerformance: 'elite' | 'high' | 'medium' | 'low';
+  deploymentFrequency: {
+    value: string;
+    unit: string;
+    target: string;
+    trend: 'up' | 'down' | 'stable';
+    change: string;
+    status: 'excellent' | 'good' | 'fair' | 'poor';
+  };
+  leadTime: {
+    value: string;
+    unit: string;
+    target: string;
+    trend: 'up' | 'down' | 'stable';
+    change: string;
+    status: 'excellent' | 'good' | 'fair' | 'poor';
+  };
+  changeFailureRate: {
+    value: number;
+    target: number;
+    trend: 'up' | 'down' | 'stable';
+    change: string;
+    status: 'excellent' | 'good' | 'fair' | 'poor';
+  };
+  mttr: {
+    value: string;
+    unit: string;
+    target: string;
+    trend: 'up' | 'down' | 'stable';
+    change: string;
+    status: 'excellent' | 'good' | 'fair' | 'poor';
+  };
+  insights: Array<{
+    type: 'positive' | 'warning' | 'critical';
+    message: string;
+  }>;
+  recentIncidents?: Array<{
+    title: string;
+    date: string;
+    duration: string;
+    impact: string;
+    resolved: boolean;
+  }>;
+}
+
 // Union type for all widget data
 export type WidgetData =
   | ExecutiveSummaryData
@@ -1603,4 +1655,6 @@ export type WidgetData =
   | UpsellOpportunitiesData
   | ProductAdoptionMetricsData
   | CSMInsightsDashboardData
-  | CSMTrainingDashboardData;
+  | CSMTrainingDashboardData
+  // V18 DORA Metrics
+  | DoraMetricsData;

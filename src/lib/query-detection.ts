@@ -54,6 +54,7 @@ import {
   performanceTrendsDemo,
   sentimentAnalysisDemo,
 } from '@/data/demo-widget-data';
+import { doraMetricsDemo } from '@/data/csm-widget-data';
 
 export interface QueryMatch {
   widgetType: WidgetType | null;
@@ -1801,12 +1802,12 @@ function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
     };
   }
 
-  // Performance metrics (DORA) → Analytics Dashboard
+  // Performance metrics (DORA) → Dedicated DORA Metrics Dashboard
   if (q.includes('dora') || (q.includes('performance') && (q.includes('metric') || q.includes('kpi')))) {
     return {
-      widgetType: 'analytics-dashboard',
-      widgetData: analyticsDashboardDemo,
-      responseText: "DORA metrics analytics reveal deployment frequency, lead time, and change failure rate:",
+      widgetType: 'dora-metrics-dashboard',
+      widgetData: doraMetricsDemo,
+      responseText: "DORA metrics show deployment frequency, lead time for changes, change failure rate, and mean time to recovery:",
     };
   }
 
