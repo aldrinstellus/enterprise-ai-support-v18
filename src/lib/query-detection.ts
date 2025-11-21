@@ -1691,6 +1691,19 @@ function detectProjectManagerQuery(q: string): QueryMatch | null {
     };
   }
 
+  // Project Status → Sprint Burndown Chart (shows overall project progress)
+  if (
+    (q.includes('project') && q.includes('status')) ||
+    q.includes('project overview') ||
+    q.includes('project progress')
+  ) {
+    return {
+      widgetType: 'sprint-burndown-chart',
+      widgetData: sprintBurndownDemo,
+      responseText: "Current project status shows sprint progress and delivery timeline:",
+    };
+  }
+
   // Default: Stakeholder Engagement (PM coordinates stakeholders)
   return {
     widgetType: 'stakeholder-engagement-dashboard',
