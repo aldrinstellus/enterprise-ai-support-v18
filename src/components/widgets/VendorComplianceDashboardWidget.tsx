@@ -85,7 +85,7 @@ export function VendorComplianceDashboardWidget({ data }: { data?: VendorComplia
       {/* Compliance Metrics Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         {[
-          { label: 'SLA Compliance', value: vendorData.compliance.slaCompliance },
+          { label: 'Service Level', value: vendorData.compliance.slaCompliance },
           { label: 'Security', value: vendorData.compliance.securityCompliance },
           { label: 'Reporting', value: vendorData.compliance.reportingCompliance },
           { label: 'Quality', value: vendorData.compliance.qualityCompliance },

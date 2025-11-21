@@ -167,7 +167,7 @@ export function TeamWorkloadDashboardWidget({ data }: { data: TeamWorkloadDashbo
                 <span className="font-medium text-foreground">{agent.avgResponseTime}</span>
               </div>
               <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">SLA Compliance</span>
+                <span className="text-muted-foreground">Compliance</span>
                 <span className={`font-medium ${agent.slaCompliance >= 90 ? 'text-success' : agent.slaCompliance >= 75 ? 'text-chart-4' : 'text-destructive'}`}>
                   {agent.slaCompliance}%
                 </span>

@@ -119,7 +119,7 @@ export function AgentPerformanceStatsWidget({ data }: { data: AgentPerformanceSt
           <div className="flex items-start justify-between mb-2">
             <div className="flex items-center gap-2">
               <Target className="h-4 w-4 text-primary" />
-              <p className="text-xs font-medium text-muted-foreground">SLA Compliance</p>
+              <p className="text-xs font-medium text-muted-foreground">Compliance</p>
             </div>
             <span className="text-xs font-medium text-muted-foreground bg-muted/50 px-2 py-0.5 rounded">
               {data.keyMetrics.slaCompliance.percentile} percentile

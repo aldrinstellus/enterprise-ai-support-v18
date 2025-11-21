@@ -1682,6 +1682,15 @@ function detectProjectManagerQuery(q: string): QueryMatch | null {
     };
   }
 
+  // Scope management
+  if (q.includes('scope') || q.includes('scope creep')) {
+    return {
+      widgetType: 'change-request-dashboard',
+      widgetData: changeRequestDemo,
+      responseText: "Scope change requests requiring PM review and approval:",
+    };
+  }
+
   // Default: Stakeholder Engagement (PM coordinates stakeholders)
   return {
     widgetType: 'stakeholder-engagement-dashboard',
@@ -1691,27 +1700,45 @@ function detectProjectManagerQuery(q: string): QueryMatch | null {
 }
 
 // ============================================================================
-// V17 PROJECT MODE - SERVICE TEAM LEAD QUERIES
+// V17 PROJECT MODE - SERVICE TEAM LEAD QUERIES (Government Enhanced)
 // ============================================================================
 
 function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
-  // Code Quality
+  // PRIORITY 1: Team Workload / Status (Government context - most requested)
+  if (
+    (q.includes('team') && q.includes('workload')) ||
+    (q.includes('team') && q.includes('status')) ||
+    (q.includes('show') && q.includes('team')) ||
+    q.includes("what's my team working on")
+  ) {
+    return {
+      widgetType: 'team-workload-dashboard',
+      widgetData: teamWorkloadDashboardDemo,
+      responseText: "Government service team workload shows task distribution and capacity across team members:",
+    };
+  }
+
+  // Code Quality Dashboard (includes code coverage and technical debt)
   if (
     q.includes('code quality') ||
+    (q.includes('show') && q.includes('code quality')) ||
     q.includes('technical debt') ||
     q.includes('test coverage') ||
-    (q.includes('code') && (q.includes('smell') || q.includes('issue')))
+    q.includes('code coverage') ||
+    (q.includes('coverage') && q.includes('debt')) ||
+    (q.includes('code') && (q.includes('smell') || q.includes('issue') || q.includes('metric')))
   ) {
     return {
       widgetType: 'code-quality-dashboard',
       widgetData: codeQualityDemo,
-      responseText: "Code quality metrics show technical debt trends and test coverage status:",
+      responseText: "Code quality metrics show technical debt trends, test coverage, and code health status:",
     };
   }
 
-  // Deployment Pipeline
+  // Deployment Pipeline Status
   if (
     q.includes('deployment') ||
+    (q.includes('show') && q.includes('deployment')) ||
     q.includes('pipeline') ||
     q.includes('ci/cd') ||
     (q.includes('deploy') && q.includes('status'))
@@ -1719,32 +1746,49 @@ function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
     return {
       widgetType: 'deployment-pipeline-dashboard',
       widgetData: deploymentPipelineDemo,
-      responseText: "Deployment pipeline health indicates CI/CD success rates and build times:",
+      responseText: "Deployment pipeline status shows CI/CD health, build success rates, and recent deployments:",
     };
   }
 
-  // Blockers → Blocker Resolution Dashboard (real-time blocker tracking)
+  // Technical Debt Tracking (explicit queries)
   if (
-    q.includes('blocker') && (q.includes('resolve') || q.includes('resolution') || q.includes('active')) ||
+    (q.includes('technical') && q.includes('debt')) ||
+    q.includes('tech debt') ||
+    q.includes('refactoring backlog')
+  ) {
+    return {
+      widgetType: 'code-quality-dashboard',
+      widgetData: codeQualityDemo,
+      responseText: "Technical debt analysis identifies areas requiring refactoring and improvement:",
+    };
+  }
+
+  // Blockers → Blocker Resolution Dashboard
+  if (
+    (q.includes('blocker') && (q.includes('resolve') || q.includes('resolution') || q.includes('active'))) ||
     q.includes('blocked tasks')
   ) {
     return {
       widgetType: 'blocker-resolution-dashboard',
-      widgetData: null,
+      widgetData: blockerResolutionDemo,
       responseText: "Real-time blocker metrics show active impediments requiring immediate technical resolution:",
     };
   }
 
-  // Team workload → Performance Trends (long-term team capacity trends)
-  if (q.includes('team') && (q.includes('workload') || q.includes('capacity') || q.includes('utilization'))) {
+  // Team Performance Analytics
+  if (
+    (q.includes('team') && q.includes('performance')) ||
+    q.includes('team analytics') ||
+    q.includes('developer metrics')
+  ) {
     return {
-      widgetType: 'performance-trends',
-      widgetData: performanceTrendsDemo,
-      responseText: "Team performance trends show developer capacity utilization across sprints:",
+      widgetType: 'agent-performance-comparison',
+      widgetData: agentPerformanceComparisonDemo,
+      responseText: "Team performance comparison shows individual contributions and efficiency metrics:",
     };
   }
 
-  // Performance metrics (DORA) → Analytics Dashboard (DORA metric analytics)
+  // Performance metrics (DORA) → Analytics Dashboard
   if (q.includes('dora') || (q.includes('performance') && (q.includes('metric') || q.includes('kpi')))) {
     return {
       widgetType: 'analytics-dashboard',
@@ -1753,77 +1797,133 @@ function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
     };
   }
 
-  // Default: Blocker Resolution Dashboard
+  // Default: Team Workload Dashboard (most useful for team lead)
   return {
-    widgetType: 'blocker-resolution-dashboard',
-    widgetData: blockerResolutionDemo,
-    responseText: "Engineering blocker dashboard displays active impediments and resolution status:",
+    widgetType: 'team-workload-dashboard',
+    widgetData: teamWorkloadDashboardDemo,
+    responseText: "Service team lead dashboard displays team workload and task assignments:",
   };
 }
 
 // ============================================================================
-// V17 PROJECT MODE - SERVICE TEAM MEMBER QUERIES
+// V17 PROJECT MODE - SERVICE TEAM MEMBER QUERIES (Government Enhanced)
 // ============================================================================
 
 function detectServiceTeamMemberQuery(q: string): QueryMatch | null {
-  // My Tasks / Kanban
+  // IC-FOCUSED QUERIES ONLY (No strategic/program-level data)
+
+  // PRIORITY 1: My Assigned Requests / Tasks (Government context)
   if (
+    q.includes('my assigned') ||
+    (q.includes('show') && q.includes('my') && q.includes('request')) ||
+    q.includes('assigned to me') ||
     q.includes('my tasks') ||
+    q.includes('my sprint tasks') ||
     q.includes('my work') ||
     q.includes('what should i work on') ||
-    q.includes('kanban') ||
+    q.includes('my priorities') ||
     (q.includes('task') && (q.includes('assigned') || q.includes('mine')))
   ) {
     return {
       widgetType: 'agent-dashboard',
       widgetData: agentDashboardDemo,
-      responseText: "Your personal dashboard shows current sprint assignments, PRs, and blockers:",
+      responseText: "Your personal task dashboard shows assigned government service requests and priorities:",
     };
   }
 
-  // Sprint tasks → Interactive Update (sprint task updates/status changes)
-  if (q.includes('sprint') && q.includes('task')) {
+  // Time Tracking
+  if (
+    q.includes('time tracking') ||
+    q.includes('time logged') ||
+    q.includes('my hours') ||
+    (q.includes('show') && q.includes('time'))
+  ) {
     return {
-      widgetType: 'interactive-update',
-      widgetData: profileUpdateSuccessDemo,
-      responseText: "Sprint task status updates require confirmation before next standup:",
+      widgetType: 'agent-performance-stats',
+      widgetData: agentPerformanceStatsDemo,
+      responseText: "Time tracking summary shows hours logged and task completion status:",
     };
   }
 
-  // Blockers → System Access Status (check if systems are blocking work)
-  if (q.includes('blocker') || q.includes('blocked')) {
-    return {
-      widgetType: 'system-access-status',
-      widgetData: multiSystemAccessResolvedDemo,
-      responseText: "System access check reveals infrastructure blockers affecting your work:",
-    };
-  }
-
-  // Code quality issues → Code Quality Dashboard (track code issues like technical debt)
-  if (q.includes('code') && (q.includes('issue') || q.includes('bug') || q.includes('fix'))) {
+  // My Pull Requests / Code Reviews
+  if (
+    q.includes('my pull request') ||
+    q.includes('my pr') ||
+    q.includes('pull requests') ||
+    (q.includes('review') && q.includes('status'))
+  ) {
     return {
       widgetType: 'code-quality-dashboard',
       widgetData: codeQualityDemo,
-      responseText: "Code quality issues in your PRs are tracked for review and resolution:",
+      responseText: "Your pull requests and code review status:",
     };
   }
 
-  // Knowledge base (including troubleshooting queries)
+  // My Performance Stats
+  if (
+    q.includes('my performance') ||
+    q.includes('my stats') ||
+    (q.includes('performance') && q.includes('sprint'))
+  ) {
+    return {
+      widgetType: 'agent-performance-stats',
+      widgetData: agentPerformanceStatsDemo,
+      responseText: "Your personal performance metrics for this sprint:",
+    };
+  }
+
+  // My Blockers
+  if (
+    q.includes('my blocker') ||
+    q.includes('blockers affecting') ||
+    (q.includes('blocker') && !q.includes('team'))
+  ) {
+    return {
+      widgetType: 'system-access-status',
+      widgetData: multiSystemAccessResolvedDemo,
+      responseText: "Blockers currently affecting your work:",
+    };
+  }
+
+  // My Current Stories/Tasks
+  if (
+    q.includes('my stories') ||
+    q.includes('my current stories') ||
+    q.includes('assigned stories')
+  ) {
+    return {
+      widgetType: 'task-kanban-board',
+      widgetData: taskKanbanDemo,
+      responseText: "Your assigned stories and tasks for the current sprint:",
+    };
+  }
+
+  // Knowledge base (IC has access to documentation)
   if (
     q.includes('how to') ||
     q.includes('troubleshoot') ||
     q.includes('knowledge') ||
     q.includes('documentation') ||
-    q.includes('guide')
+    q.includes('guide') ||
+    q.includes('search')
   ) {
     return {
       widgetType: 'knowledge-article',
       widgetData: knowledgeArticleDemo,
-      responseText: "Knowledge base search found technical documentation for your query:",
+      responseText: "Knowledge base search found relevant documentation:",
     };
   }
 
-  // Default: Show Agent Performance Stats (developer's own performance)
+  // Code quality issues (personal code quality)
+  if (q.includes('code') && (q.includes('issue') || q.includes('bug') || q.includes('fix'))) {
+    return {
+      widgetType: 'code-quality-dashboard',
+      widgetData: codeQualityDemo,
+      responseText: "Code quality issues in your recent commits:",
+    };
+  }
+
+  // Default: Show personal performance stats (IC-appropriate)
   return {
     widgetType: 'agent-performance-stats',
     widgetData: agentPerformanceStatsDemo,

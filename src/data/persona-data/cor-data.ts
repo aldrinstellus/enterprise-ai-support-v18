@@ -134,9 +134,9 @@ export const corVendorComplianceData = {
   // Violations requiring attention
   violations: [
     {
-      type: 'SLA Breach',
+      type: 'Service Level Breach',
       severity: 'medium' as const,
-      description: 'Response time exceeded 4-hour SLA on 3 incidents',
+      description: 'Response time exceeded 4-hour service level requirement on 3 incidents',
       date: '2025-11-08',
       status: 'open' as const,
       remediationDue: '2025-11-20',
@@ -153,7 +153,7 @@ export const corVendorComplianceData = {
   // Recommendations for improvement
   recommendations: [
     'Schedule monthly compliance review meetings',
-    'Implement automated SLA monitoring dashboard',
+    'Implement automated service level monitoring dashboard',
     'Update security patch management procedures',
   ],
 
@@ -358,11 +358,11 @@ export const corBudgetTrackingData = {
 };
 
 /**
- * COR SLA COMPLIANCE TRACKING
+ * COR SERVICE LEVEL COMPLIANCE TRACKING
  * Service Level Agreement monitoring
  */
 export const corSLAComplianceData = {
-  title: 'SLA Compliance Dashboard',
+  title: 'Service Level Compliance Dashboard',
   reportingPeriod: 'November 2025',
   overallCompliance: 87,
   target: 90,

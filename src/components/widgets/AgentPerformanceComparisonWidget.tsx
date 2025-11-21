@@ -45,7 +45,7 @@ export function AgentPerformanceComparisonWidget({
             </div>
           </div>
           <div>
-            <div className="text-xs text-muted-foreground mb-1">SLA Compliance</div>
+            <div className="text-xs text-muted-foreground mb-1">Compliance</div>
             <div
               className={`text-lg font-bold ${
                 data.teamAverage.slaCompliance >= 90
@@ -155,7 +155,7 @@ export function AgentPerformanceComparisonWidget({
                   <div>
                     <div className="flex items-center gap-1 mb-1">
                       <Target className="h-3 w-3 text-primary" />
-                      <span className="text-xs text-muted-foreground">SLA</span>
+                      <span className="text-xs text-muted-foreground">Compliance</span>
                     </div>
                     <div
                       className={`text-sm font-semibold ${
@@ -283,7 +283,7 @@ export function AgentPerformanceComparisonWidget({
                   <div>
                     <div className="flex items-center gap-1 mb-1">
                       <Target className="h-3 w-3 text-primary" />
-                      <span className="text-xs text-muted-foreground">SLA</span>
+                      <span className="text-xs text-muted-foreground">Compliance</span>
                     </div>
                     <div
                       className={`text-sm font-semibold ${

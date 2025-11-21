@@ -570,8 +570,8 @@ export const agentPerformanceComparisonDemo: AgentPerformanceComparisonData = {
       metrics: {
         ticketsResolved: 68,
         avgResolutionTime: '3.1 hours',
-        slaCompliance: 95,
-        customerSatisfaction: 4.8,
+        slaCompliance: 93,
+        customerSatisfaction: 4.6,
         firstResponseTime: '18 minutes',
       },
       strengths: ['Technical expertise', 'Fast response', 'Customer empathy'],
@@ -584,8 +584,8 @@ export const agentPerformanceComparisonDemo: AgentPerformanceComparisonData = {
       metrics: {
         ticketsResolved: 61,
         avgResolutionTime: '3.5 hours',
-        slaCompliance: 92,
-        customerSatisfaction: 4.6,
+        slaCompliance: 89,
+        customerSatisfaction: 4.4,
         firstResponseTime: '22 minutes',
       },
       strengths: ['Complex problem solving', 'Documentation', 'Mentoring'],
@@ -598,8 +598,8 @@ export const agentPerformanceComparisonDemo: AgentPerformanceComparisonData = {
       metrics: {
         ticketsResolved: 58,
         avgResolutionTime: '3.8 hours',
-        slaCompliance: 90,
-        customerSatisfaction: 4.5,
+        slaCompliance: 86,
+        customerSatisfaction: 4.3,
         firstResponseTime: '25 minutes',
       },
       strengths: ['Communication', 'Follow-through', 'Escalation management'],
@@ -887,7 +887,7 @@ export const teamWorkloadDashboardDemo: TeamWorkloadDashboardData = {
       loadPercentage: 40,
       loadStatus: 'low',
       avgResponseTime: '12m',
-      slaCompliance: 98,
+      slaCompliance: 92,
       activeTickets: {
         critical: 0,
         high: 1,
@@ -908,7 +908,7 @@ export const teamWorkloadDashboardDemo: TeamWorkloadDashboardData = {
       loadPercentage: 60,
       loadStatus: 'moderate',
       avgResponseTime: '18m',
-      slaCompliance: 95,
+      slaCompliance: 89,
       activeTickets: {
         critical: 1,
         high: 2,
@@ -975,7 +975,7 @@ export const teamWorkloadDashboardDemo: TeamWorkloadDashboardData = {
       loadPercentage: 50,
       loadStatus: 'moderate',
       avgResponseTime: '15m',
-      slaCompliance: 96,
+      slaCompliance: 88,
       activeTickets: {
         critical: 0,
         high: 1,
@@ -996,7 +996,7 @@ export const teamWorkloadDashboardDemo: TeamWorkloadDashboardData = {
       loadPercentage: 70,
       loadStatus: 'moderate',
       avgResponseTime: '22m',
-      slaCompliance: 92,
+      slaCompliance: 86,
       activeTickets: {
         critical: 1,
         high: 2,

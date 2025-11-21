@@ -30,7 +30,7 @@ export function ContractPerformanceDashboardWidget({ data: providedData }: { dat
   }
 
   const performanceData = [
-    { name: 'SLA', value: data.performance.slaCompliance, color: '#10b981', gradient: 'url(#colorSLA)' },
+    { name: 'Compliance', value: data.performance.slaCompliance, color: '#10b981', gradient: 'url(#colorSLA)' },
     { name: 'Budget', value: data.performance.budgetUtilization, color: '#3b82f6', gradient: 'url(#colorBudget)' },
     { name: 'Deliverables', value: data.performance.deliverableCompletion, color: '#8b5cf6', gradient: 'url(#colorDeliverables)' },
   ];

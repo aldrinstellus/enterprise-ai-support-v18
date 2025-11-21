@@ -101,7 +101,7 @@ export function AgentDashboardWidget({ data }: { data: AgentDashboardData }) {
             </div>
           </div>
           <div>
-            <div className="text-xs text-muted-foreground mb-1">SLA Compliance</div>
+            <div className="text-xs text-muted-foreground mb-1">Compliance</div>
             <div className="text-lg font-bold text-success">
               {data.performanceSnapshot.slaCompliance}%
             </div>

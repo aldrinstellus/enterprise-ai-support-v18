@@ -279,6 +279,15 @@ const conversationEntries: ConversationEntry[] = [
     aiResponse:
       "I can help you schedule a 1-on-1 coaching session with Marcus. The session will be 30 minutes.\n\nWould you like me to check calendars for availability?",
   },
+
+  // V18 Wonder Woman Fix: Team Budget Tracking for CS Manager
+  {
+    id: 'v18-team-budget',
+    triggers: ['team budget', 'department costs', 'show budget', 'budget tracking', 'department budget'],
+    userQuery: 'Show team budget and department costs',
+    aiResponse: "Here's your CS team budget overview:\n\n**Total Budget**: $450,000\n**Spent**: $312,000 (69%)\n**Remaining**: $138,000 (31%)\n\n**Breakdown by Category**:\n- Agent Salaries: $285K / $320K (89%)\n- Training: $12K / $50K (24%)\n- Tools & Software: $8.5K / $45K (19%)\n- Contractors: $6.5K / $35K (19%)\n\n**Recommendations**:\n1. Accelerate Q4 training spend before budget reset\n2. Consider tool upgrades with remaining software budget\n3. On track for year-end close",
+    widgetType: 'team-workload-dashboard',
+  },
 ];
 
 /**
