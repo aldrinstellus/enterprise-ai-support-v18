@@ -14,12 +14,12 @@ import { ModeSwitcher } from './ModeSwitcher';
 export const CTISLogo = () => {
   return (
     <div className="flex-shrink-0 px-3 pt-3 pb-3 space-y-2">
-      {/* CTIS Logo Card */}
-      <div className="flex items-center justify-center px-3 py-3 bg-primary/5 border border-primary/10 rounded-md">
+      {/* CTIS Logo */}
+      <div className="flex items-center justify-center py-2">
         <img
           src="/ctis-logo.png"
           alt="CTIS Logo"
-          className="h-12 w-auto object-contain"
+          className="h-10 w-auto object-contain"
         />
       </div>
 
