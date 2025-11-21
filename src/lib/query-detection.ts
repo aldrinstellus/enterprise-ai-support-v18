@@ -1717,7 +1717,7 @@ function detectProjectManagerQuery(q: string): QueryMatch | null {
 // ============================================================================
 
 function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
-  // PRIORITY 1: Team Workload / Status (Government context - most requested)
+  // PRIORITY 1: Team Workload / Status (Project context - most requested)
   if (
     (q.includes('team') && q.includes('workload')) ||
     (q.includes('team') && q.includes('status')) ||
@@ -1727,7 +1727,7 @@ function detectServiceTeamLeadQuery(q: string): QueryMatch | null {
     return {
       widgetType: 'team-workload-dashboard',
       widgetData: teamWorkloadDashboardDemo,
-      responseText: "Government service team workload shows task distribution and capacity across team members:",
+      responseText: "Project service team workload shows task distribution and capacity across team members:",
     };
   }
 
