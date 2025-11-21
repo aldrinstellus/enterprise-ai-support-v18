@@ -1673,12 +1673,12 @@ function detectProjectManagerQuery(q: string): QueryMatch | null {
     };
   }
 
-  // Blockers → Change Request Dashboard (blockers often need change requests)
+  // Blockers → Blocker Resolution Dashboard (actual blockers/impediments)
   if (q.includes('blocker') || q.includes('blocked task')) {
     return {
-      widgetType: 'change-request-dashboard',
-      widgetData: changeRequestDemo,
-      responseText: "Blocker-related change requests require PM review and stakeholder approval:",
+      widgetType: 'blocker-resolution-dashboard',
+      widgetData: blockerResolutionDemo,
+      responseText: "Active blockers and impediments requiring immediate resolution:",
     };
   }
 
